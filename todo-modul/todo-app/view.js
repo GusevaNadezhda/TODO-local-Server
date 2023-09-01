@@ -1,5 +1,4 @@
 let arrItems = [];
-let keyName = ""
 
 // создаем и возвращаем заголовок приложения
 function createAppTitle(title) {
@@ -127,9 +126,6 @@ function createTodoApp(container, {
 
     arrItems.push(todoItem);
 
-    // saveList(arrItems, keyName)
-    console.log(arrItems)
-
     // запишем в переменную значение введенных данных в импут
     let todoItemElement = createTodoItem(todoItem, handlers)
     // //  добавляем обработчики событий на кнопки
@@ -150,8 +146,6 @@ function createTodoApp(container, {
 
 
 function createTodoItem(todoItem, { onDone, onDelete }) {
-
-  console.log(todoItem)
 
   // создаем элемент списка т.е. введенное дело
   let item = document.createElement('li');
@@ -181,9 +175,6 @@ function createTodoItem(todoItem, { onDone, onDelete }) {
   doneButton.addEventListener('click', () => {
     onDone({ todoItem, element: item })
     item.classList.toggle('list-group-item-success');
-    console.log(item.classList.contains('list-group-item-success'))
-
-
   });
 
   // при нажатии на кнопку "удалить" всплывает сообщение с вопросом если ответ положительный "ок" значит это true  и  строка с делом удаляется
@@ -198,11 +189,6 @@ function createTodoItem(todoItem, { onDone, onDelete }) {
   buttonGroup.append(doneButton);
   buttonGroup.append(deleteButton);
   item.append(buttonGroup)
-
-  // создадим объект Дело со свойствами id которое будет принимать значение из функции createId, name которое будет принимать значение name
-  // из функции createTodoItem и состояние true сделано и folse не сделано
-
-
 
   // приложению нужен доступ к самому элементу и кнопкам, чтобы обрабатывать события нажатия
 
@@ -260,7 +246,6 @@ export async function createButtonForChooseStorage(listName, title,container) {
       // const listName = "myList";
       // (async ()=>{
       const todoItemList = await getTodoList(listName);
-      console.log(todoItemList)
       createTodoApp(container, {
         title,
         listName,
@@ -284,19 +269,6 @@ export async function createButtonForChooseStorage(listName, title,container) {
 }
 
 function chooseList (){
-
-  // const myList = document.getElementsByClassName('my-list')
-  // const momList = document.getElementsByClassName('mom-list')
-  // const dadList = document.getElementsByClassName('dad-list')
-
-  // console.log(myList)
-
-  // myList.addEventListener('submit', function() {
-  //   alert('мой лист')
-  //   const myContainer = document.getElementById('todo-app-my')
-  //   createButtonForChooseStorage("myList", "Мои дела", myContainer)
-  // })
-
 const myContainer = document.getElementById('todo-app-my')
   const momContainer = document.getElementById('todo-app-mom')
   const dadContainer = document.getElementById('todo-app-dad')

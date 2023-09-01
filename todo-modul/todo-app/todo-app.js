@@ -73,13 +73,11 @@
     keyName = listName;
 
     // добавляем в контейнер созданные с помощью функций элементы В контейнер добавляем заголовок, форму (обращаем внимание todoItemForm.form) и лист
-console.log(container)
     container.append(todoAppTitle);
     container.append(todoItemForm.form);
     container.append(todoList);
 
     let localData = localStorage.getItem(keyName)
-    console.log(localData)
 
     if(localData !==null && localData !== '') arrItems = JSON.parse(localData)
 
@@ -87,8 +85,6 @@ console.log(container)
       let todoItem = createTodoItem(arrItem);
       todoList.append(todoItem.item)
     }
-
-    console.log(arrItems)
 
     todoItemForm.form.addEventListener('input', function () {
       if (todoItemForm.input.value) {
@@ -119,7 +115,6 @@ console.log(container)
       arrItems.push(objectItem);
 
       saveList(arrItems, keyName)
-      console.log(arrItems)
 
       // запишем в переменную значение введенных данных в импут
       let todoItem = createTodoItem(objectItem)
@@ -170,7 +165,6 @@ console.log(container)
     // в импуте есть кнопка 'готово ' при нажатии на которую добавляется класс list-group-item-success который окрашивает строчку с делом в зеленый цвет
     doneButton.addEventListener('click', function () {
       item.classList.toggle('list-group-item-success');
-      console.log(item.classList.contains('list-group-item-success'))
 
 
       for (const arrItem of arrItems) {
@@ -189,9 +183,7 @@ console.log(container)
         item.remove();
 
         let currentName = item.firstChild.textContent
-        console.log(obj.id)
         for (let i = 0; i < arrItems.length; i++) {
-          console.log(obj.id)
           if (obj.id == arrItems[i].id) {
             arrItems.splice(i, 1)
           }
@@ -221,15 +213,6 @@ console.log(container)
     }
   }
 
-  // функция создания массива дел. При добавлении объекта Дело добавляем его в наш массив дел
-
-
-  // function createArrItem() {
-  //   let arrItems = [];
-  //   arrItems.push(createTodoItem.objectItem);
-  //   console.log(createTodoItem.objectItem)
-  //   console.log(arrItems)
-  // }
 
   // Создадим функцию которая будет перебирать объекты в массиве и менять им свойство id прибавляя 1
   function createId(arr) {
